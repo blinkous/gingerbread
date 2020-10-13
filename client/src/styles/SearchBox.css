@@ -21,7 +21,6 @@
 }
 
 .search-input::placeholder {
-  /* text-align: center; */
   font-weight: normal;
   color: inherit;
 }
@@ -38,7 +37,18 @@
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+.search-btn {
+  height: 100%;
   position: absolute;
   right: 1rem;
   z-index: 1;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.search-btn:focus {
+  outline: none;
 }

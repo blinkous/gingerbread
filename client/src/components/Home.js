@@ -33,7 +33,7 @@ export default function Home() {
         </h1>
         <SearchBox onSearch={onSearch} />
       </section>
-      <section>
+      <section className="section sect-2">
         <h3 className="heading">Recipe of the Day</h3>
         {data !== undefined &&
           data.map((el, index) => (
