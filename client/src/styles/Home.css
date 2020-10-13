@@ -10,41 +10,80 @@ body {
 
 .heading {
   font-family: "Allura", sans-serif;
-  color: white;
 }
 
-.section {
-  position: relative;
-  margin: auto;
-  text-align: center;
-}
-
-.sect-1 {
+#home {
   --size: 95;
   --width: calc(var(--size) * 1vh);
   --height: calc(var(--size) * 1vw);
   --title-size: 14vw;
+  --accent: white;
   max-width: var(--height);
   max-height: var(--width);
   height: var(--height);
   width: var(--width);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  text-align: center;
+  padding: 0;
   align-items: center;
   border-radius: 100%;
-  --accent: white;
   border: 3vh double var(--accent);
+  color: var(--accent);
+  transition: 1s all;
+}
+
+#home.show {
+  --title-size: 3rem;
+  --accent: var(--main-color);
+  border-radius: 0%;
+  width: 100vw;
+  height: 100vh;
+  border: 1px solid transparent;
+  background: white;
+  display: block;
+}
+
+#home .search-cont {
+  --size: var(--title-size);
+  top: 60%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#home.show .search-cont {
+  --background: var(--accent);
+  --foreground: white;
+  width: 80vw;
+  height: 2.25rem;
+  top: calc(var(--title-size) * 1.6);
 }
 
 #main-title {
+  --maccent: var(--accent);
+  --text-shadow-color: var(--accent);
+  position: absolute;
+  top: 35%;
+  width: 100%;
+  text-align: center;
+  padding-right: calc(var(--title-size) * 0.25);
   margin: 0;
+  color: var(--maccent);
   font-size: var(--title-size);
-  text-shadow: 0 0 1.5rem var(--accent);
+  text-shadow: 0 0 calc(var(--title-size) * 0.2) var(--text-shadow-color);
+  transition: inherit;
+}
+
+#home.show #main-title {
+  --text-shadow-color: transparent;
+  top: 1rem;
 }
 
 @media (max-height: 75vw) {
-  .sect-1 {
+  #home {
     --title-size: 17vh;
   }
 }

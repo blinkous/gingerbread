@@ -1,23 +1,33 @@
 .search-cont {
-  width: calc(var(--title-size) * 3.5);
-  height: calc(var(--title-size) * 0.33);
+  --size: 14vw;
+  --background: white;
+  --foreground: var(--main-color, rgb(44, 44, 44));
+  width: calc(var(--size) * 3.5);
+  height: calc(var(--size) * 0.33);
   border-radius: 10vw;
   position: relative;
+  transition: inherit;
+}
+
+.search-cont * {
+  transition: inherit;
 }
 
 .search-input {
   width: 100%;
   height: 100%;
+  min-height: 1.5rem;
   position: relative;
   z-index: 0;
   border: none;
-  border-radius: var(--title-size);
+  border-radius: 100vh;
   margin: 0;
   padding: 0 1rem;
-  color: var(--main-color);
-  font-size: 100%;
+  color: var(--foreground);
+  font-size: 1rem;
   font-weight: bold;
   letter-spacing: 0.1rem;
+  background: var(--background);
 }
 
 .search-input::placeholder {
@@ -27,16 +37,7 @@
 
 .search-input:focus {
   outline: none;
-  box-shadow: 0 0 1.5rem var(--accent);
-}
-
-.search-svg {
-  height: 100%;
-  fill: none;
-  stroke: var(--main-color);
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  box-shadow: 0 0 1.5rem var(--foreground);
 }
 
 .search-btn {
@@ -51,4 +52,18 @@
 
 .search-btn:focus {
   outline: none;
+}
+
+.search-svg {
+  height: 100%;
+  fill: transparent;
+  stroke: var(--foreground);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: 0.3s all;
+}
+
+.search-btn:hover .search-svg {
+  fill: var(--foreground);
 }
