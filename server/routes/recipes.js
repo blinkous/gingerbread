@@ -10,7 +10,7 @@ router.get("/:query", function (req, res) {
   if (query !== "") {
     axios
       .get(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${key}&query=${query}`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${key}&query=${query}&number=10`
       )
       .then((response) => {
         console.log(
