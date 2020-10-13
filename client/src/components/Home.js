@@ -7,7 +7,7 @@ export default function Home() {
 
   const getData = async (searchQuery) => {
     try {
-      const response = await fetch(`/api/recipes/:${searchQuery}`);
+      const response = await fetch(`/api/recipes/${searchQuery}`);
       const body = await response.json();
       console.log(body);
       setData(body);
@@ -16,7 +16,10 @@ export default function Home() {
     }
   };
 
-  const onSearch = (value) => {};
+  const onSearch = (value) => {
+    console.log("Received Input: ", value);
+    // getData(value);
+  };
 
   useEffect(() => {
     // getData();

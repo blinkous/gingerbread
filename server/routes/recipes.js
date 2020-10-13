@@ -4,11 +4,12 @@ const key = process.env.API_KEY;
 // const axios = require("axios").default;
 const axios = require("axios");
 
-/* GET users listing. */
-router.get("/", function (req, res) {
+/* GET Recipes matching query from API */
+router.get("/:query", function (req, res) {
+  const { query } = req.params;
   axios
     .get(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${key}&query=gingerbread`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${key}&query=${query}`
     )
     .then((response) => {
       console.log("GINNGGGGGGYYYYYY", response.data.results);
