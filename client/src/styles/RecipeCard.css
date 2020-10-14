@@ -1,20 +1,21 @@
 .recipe-card {
   --main-accent: var(--main-color);
   --accent: var(--main-accent);
+  --accent: white;
   width: 22rem;
   height: 15rem;
   border-radius: 0.5rem;
-  border: 1px solid rgb(201, 201, 201);
   overflow: hidden;
   padding: 0.5rem;
   transition: 0.4s all;
   cursor: pointer;
+  border: 1px solid var(--accent);
+  background: var(--main-accent);
 }
 
 .recipe-card:hover {
-  --accent: white;
-  border-color: var(--accent);
-  background: var(--main-accent);
+  --accent: var(--main-accent);
+  background: white;
 }
 
 .recipe-card * {
@@ -34,9 +35,11 @@
 }
 
 .recipe-title {
-  margin: 1rem 0;
+  margin: 1rem auto;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: normal;
   color: var(--accent);
+  padding: 0.2rem 0;
+  width: 90%;
 }
