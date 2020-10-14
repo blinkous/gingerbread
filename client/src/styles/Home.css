@@ -85,10 +85,20 @@
     opacity: 1;
   }
 }
+
 #home.show .results {
+  height: calc(90% - var(--padding-top));
+  width: 98%;
   animation: fadein 1s both 0.5s;
-  margin: var(--padding-top) auto;
-  width: 90%;
+  margin: auto;
+  margin-top: var(--padding-top);
+  overflow-y: scroll;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  --grid-gap: 0.25rem;
+  grid-gap: var(--grid-gap);
+  gap: var(--grid-gap);
+  padding: 1rem;
 }
 
 @media (max-height: 75vw) {

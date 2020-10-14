@@ -2,8 +2,8 @@
   --main-accent: var(--main-color);
   --accent: var(--main-accent);
   --accent: white;
-  width: 22rem;
   height: 15rem;
+  margin: 0;
   border-radius: 0.5rem;
   overflow: hidden;
   padding: 0.5rem;
@@ -23,15 +23,11 @@
 }
 
 .recipe-image {
-  height: 80%;
+  height: 70%;
   width: 100%;
   object-fit: cover;
   border-top-right-radius: inherit;
   border-top-left-radius: inherit;
-}
-
-.recipe-card:hover .recipe-image {
-  filter: saturate(1.1) contrast(1.1) brightness(1.1);
 }
 
 .recipe-title {

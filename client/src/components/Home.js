@@ -6,7 +6,6 @@ import GingerBreadImage from "../images/gingerbread-cookies.jpg";
 
 export default function Home() {
   const [data, setData] = useState([]);
-  const [show, setShow] = useState(false);
 
   const testData = {
     title: "Gingerbread Cookies",
@@ -25,25 +24,27 @@ export default function Home() {
   };
 
   const onSearch = (value) => {
-    console.log("Received Input: ", value);
-    // getData(value);
-    setShow((p) => !p);
+    if (value === "") {
+      setData([]);
+    } else {
+      getData(value);
+    }
   };
 
   return (
-    <div id="home" className={`section sect-1 ${show ? "show" : ""}`}>
+    <div
+      id="home"
+      className={`section sect-1 ${data.length > 0 ? "show" : ""}`}
+    >
       <h1 id="main-title" className="heading">
         Gingerbread
       </h1>
       <SearchBox onSearch={onSearch} />
-      {/* {data !== undefined &&
-        data.map(({ image, title }, index) => (
-          <RecipeCard title={title} image={image} key={index} />
-        ))} */}
-
-      {show && (
+      {data.length > 0 && (
         <div className="results">
-          <RecipeCard title={testData.title} image={testData.image} />
+          {data.map(({ image, title }, index) => (
+            <RecipeCard title={title} image={image} key={index} />
+          ))}
         </div>
       )}
     </div>
