@@ -1,10 +1,17 @@
 import React, { useState } from "react";
 import "../styles/Home.css";
+import RecipeCard from "./RecipeCard";
 import SearchBox from "./SearchBox";
+import GingerBreadImage from "../images/gingerbread-cookies.jpg";
 
 export default function Home() {
   const [data, setData] = useState([]);
   const [show, setShow] = useState(false);
+
+  const testData = {
+    title: "Gingerbread Cookies",
+    image: GingerBreadImage,
+  };
 
   const getData = async (searchQuery) => {
     try {
@@ -29,14 +36,16 @@ export default function Home() {
         Gingerbread
       </h1>
       <SearchBox onSearch={onSearch} />
-      {/* <h3 className="heading">Recipe of the Day</h3> */}
-      {data !== undefined &&
-        data.map((el, index) => (
-          <div className="recipe-card" key={index}>
-            <h5 className="heading">{el.title}</h5>
-            <img src={el.image} alt={el.title} />
-          </div>
-        ))}
+      {/* {data !== undefined &&
+        data.map(({ image, title }, index) => (
+          <RecipeCard title={title} image={image} key={index} />
+        ))} */}
+
+      {show && (
+        <div className="results">
+          <RecipeCard title={testData.title} image={testData.image} />
+        </div>
+      )}
     </div>
   );
 }
