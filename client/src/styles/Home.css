@@ -101,6 +101,16 @@
   padding: 1rem;
 }
 
+.no-results {
+  display: none;
+}
+
+#home.show .no-results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-height: 75vw) {
   #home {
     --title-size: 17vh;
