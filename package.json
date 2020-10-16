@@ -1,8 +1,11 @@
 {
   "name": "gingerbread",
   "version": "1.0.0",
+  "homepage": "http://blinkous.github.io/gingerbread",
   "scripts": {
-    "start": "cd server && npm run start-all"
+    "start": "cd server && npm run start-all",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages-d build"
   },
   "dependencies": {
     "cookie-parser": "^1.4.5"
