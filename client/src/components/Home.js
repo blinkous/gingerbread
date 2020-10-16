@@ -23,14 +23,17 @@ export default function Home() {
         displayNoResultMessage && setDisplayNoResultMessage(false);
         setData(body);
       } else {
-        !displayNoResultMessage && setDisplayNoResultMessage(true);
-        setData(generateStaticData());
+        displayStaticData();
       }
     } catch (e) {
       console.log("Unable to fetch recipes", e);
-      !displayNoResultMessage && setDisplayNoResultMessage(true);
-      setData(generateStaticData());
+      displayStaticData();
     }
+  };
+
+  const displayStaticData = () => {
+    !displayNoResultMessage && setDisplayNoResultMessage(true);
+    setData(generateStaticData());
   };
 
   const onSearch = (value) => {
