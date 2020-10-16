@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/gingerbread/static/css/main.a9d057a9.chunk.css",
+    "main.js": "/gingerbread/static/js/main.1273f4b8.chunk.js",
+    "main.js.map": "/gingerbread/static/js/main.1273f4b8.chunk.js.map",
+    "runtime-main.js": "/gingerbread/static/js/runtime-main.ed94a5f9.js",
+    "runtime-main.js.map": "/gingerbread/static/js/runtime-main.ed94a5f9.js.map",
+    "static/js/2.b4827d60.chunk.js": "/gingerbread/static/js/2.b4827d60.chunk.js",
+    "static/js/2.b4827d60.chunk.js.map": "/gingerbread/static/js/2.b4827d60.chunk.js.map",
+    "index.html": "/gingerbread/index.html",
+    "precache-manifest.cf40dcb9afeab72cb0170c1cd31611bc.js": "/gingerbread/precache-manifest.cf40dcb9afeab72cb0170c1cd31611bc.js",
+    "service-worker.js": "/gingerbread/service-worker.js",
+    "static/css/main.a9d057a9.chunk.css.map": "/gingerbread/static/css/main.a9d057a9.chunk.css.map",
+    "static/js/2.b4827d60.chunk.js.LICENSE.txt": "/gingerbread/static/js/2.b4827d60.chunk.js.LICENSE.txt",
+    "static/media/gingerbread-cookies-0.jpg": "/gingerbread/static/media/gingerbread-cookies-0.8d97a91f.jpg",
+    "static/media/gingerbread-cookies-1.jpg": "/gingerbread/static/media/gingerbread-cookies-1.cf1c52ba.jpg",
+    "static/media/gingerbread-cookies-2.jpg": "/gingerbread/static/media/gingerbread-cookies-2.05688863.jpg",
+    "static/media/gingerbread-cookies-3.jpg": "/gingerbread/static/media/gingerbread-cookies-3.4a15f623.jpg",
+    "static/media/gingerbread-cookies-4.jpg": "/gingerbread/static/media/gingerbread-cookies-4.328bcb12.jpg",
+    "static/media/gingerbread-cookies-5.jpg": "/gingerbread/static/media/gingerbread-cookies-5.98e7c12f.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ed94a5f9.js",
+    "static/js/2.b4827d60.chunk.js",
+    "static/css/main.a9d057a9.chunk.css",
+    "static/js/main.1273f4b8.chunk.js"
+  ]
+}
