@@ -1,18 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import "../styles/SearchBox.css";
-import { setQuery } from "../redux/actions";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { setSearch as setSearchAction } from "../redux/actions";
+import { connect } from "react-redux";
 
-const SearchBox = ({ onSearch }) => {
-  const [value, setValue] = useState("");
-
+const SearchBox = ({ onSubmit, setSearch }) => {
   const handleChange = ({ currentTarget: { value } }) => {
-    setValue(value);
+    setSearch(value);
   };
 
   const handleClick = (e) => {
     e.preventDefault();
-    onSearch(value);
+    onSubmit();
   };
 
   return (
@@ -39,5 +37,6 @@ const SearchBox = ({ onSearch }) => {
   );
 };
 
-// export default connect(null, { setQuery })(SearchBox);
-export default SearchBox;
+export default connect(null, {
+  setSearch: setSearchAction,
+})(SearchBox);

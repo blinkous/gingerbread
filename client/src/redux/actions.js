@@ -1,8 +1,8 @@
 import {
   POPULATE_RECIPE_RESULTS,
   CLEAR_RECIPE_RESULTS,
-  SET_QUERY,
   ADD_RECIPE_RESULT,
+  SET_SEARCH,
 } from "./actionTypes";
 
 export const populateRecipes = (recipes) => ({
@@ -23,9 +23,9 @@ export const clearRecipes = () => ({
   type: CLEAR_RECIPE_RESULTS,
 });
 
-export const setQuery = (query) => ({
-  type: SET_QUERY,
+export const setSearch = (search) => ({
+  type: SET_SEARCH,
   payload: {
-    query,
+    search,
   },
 });

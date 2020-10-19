@@ -9,10 +9,10 @@ const initialState = [];
 const recipesReducers = (state = initialState, action) => {
   switch (action.type) {
     case POPULATE_RECIPE_RESULTS:
-      return action.payload;
+      return action.payload.recipes;
 
     case ADD_RECIPE_RESULT:
-      return [...state, action.payload];
+      return [...state, action.payload.recipes];
 
     case CLEAR_RECIPE_RESULTS:
       return initialState;

@@ -1,9 +1,9 @@
 import { SET_SEARCH } from "../actionTypes";
 
 const searchReducer = (state = "", action) => {
-  switch (action) {
+  switch (action.type) {
     case SET_SEARCH:
-      return action.payload;
+      return action.payload.search;
     default:
       return state;
   }

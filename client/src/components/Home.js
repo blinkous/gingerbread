@@ -8,8 +8,9 @@ import GingerBreadImage2 from "../images/gingerbread-cookies-2.jpg";
 import GingerBreadImage3 from "../images/gingerbread-cookies-3.jpg";
 import GingerBreadImage4 from "../images/gingerbread-cookies-4.jpg";
 import GingerBreadImage5 from "../images/gingerbread-cookies-5.jpg";
+import { connect } from "react-redux";
 
-export default function Home() {
+const Home = ({ search }) => {
   const [data, setData] = useState([]);
   const [displayNoResultMessage, setDisplayNoResultMessage] = useState(false);
 
@@ -36,11 +37,11 @@ export default function Home() {
     setData(generateStaticData());
   };
 
-  const onSearch = (value) => {
-    if (value === "") {
-      setData([]);
+  const onSearch = () => {
+    if (search) {
+      getData(search);
     } else {
-      getData(value);
+      setData([]);
     }
   };
 
@@ -52,7 +53,7 @@ export default function Home() {
       <h1 id="main-title" className="heading">
         Gingerbread
       </h1>
-      <SearchBox onSearch={onSearch} />
+      <SearchBox onSubmit={onSearch} />
       {data.length > 0 && (
         <div className="results">
           {displayNoResultMessage && (
@@ -68,7 +69,7 @@ export default function Home() {
       )}
     </div>
   );
-}
+};
 
 const generateStaticData = () => {
   const dataList = [
@@ -81,3 +82,5 @@ const generateStaticData = () => {
   ];
   return dataList;
 };
+
+export default connect((state) => ({ search: state.search }))(Home);
