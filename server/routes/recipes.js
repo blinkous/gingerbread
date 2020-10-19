@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 const key = process.env.API_KEY;
 const axios = require("axios");
+const numExpectedResults = 9;
 
 /* GET Recipes matching query from API */
 router.get("/:query", function (req, res) {
@@ -9,7 +10,7 @@ router.get("/:query", function (req, res) {
   if (query !== "") {
     axios
       .get(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${key}&query=${query}&number=10`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${key}&query=${query}&number=${numExpectedResults}`
       )
       .then(({ data: { results } }) => {
         console.log("<3 Gingerbread has gotten some results: ", results);
