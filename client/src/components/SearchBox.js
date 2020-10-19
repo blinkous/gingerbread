@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "../styles/SearchBox.css";
+import { setQuery } from "../redux/actions";
+import { connect, useDispatch, useSelector } from "react-redux";
 
 const SearchBox = ({ onSearch }) => {
   const [value, setValue] = useState("");
@@ -37,4 +39,5 @@ const SearchBox = ({ onSearch }) => {
   );
 };
 
+// export default connect(null, { setQuery })(SearchBox);
 export default SearchBox;
