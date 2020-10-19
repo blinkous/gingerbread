@@ -1,6 +1,5 @@
 import React from "react";
 import "../styles/RecipeCard.css";
-import PropType from "prop-types";
 
 const RecipeCard = ({ title, image, onClick = null }) => {
   return (
@@ -9,12 +8,6 @@ const RecipeCard = ({ title, image, onClick = null }) => {
       <h5 className="recipe-title">{title}</h5>
     </div>
   );
-};
-
-RecipeCard.propTypes = {
-  title: PropType.string.isRequired,
-  image: PropType.string.isRequired,
-  onClick: PropType.func,
 };
 
 export default RecipeCard;

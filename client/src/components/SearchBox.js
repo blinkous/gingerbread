@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import "../styles/SearchBox.css";
 
 const SearchBox = ({ onSearch }) => {
@@ -36,10 +35,6 @@ const SearchBox = ({ onSearch }) => {
       </button>
     </form>
   );
-};
-
-SearchBox.propTypes = {
-  onSearch: PropTypes.func.isRequired,
 };
 
 export default SearchBox;
