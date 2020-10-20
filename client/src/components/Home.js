@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Home.css";
 import RecipeCard from "./RecipeCard";
 import SearchBox from "./SearchBox";
@@ -32,6 +32,10 @@ const Home = ({ search }) => {
     }
   };
 
+  useEffect(() => {
+    onSearch();
+  }, [search]);
+
   const displayStaticData = () => {
     !displayNoResultMessage && setDisplayNoResultMessage(true);
     setData(generateStaticData());
@@ -53,7 +57,7 @@ const Home = ({ search }) => {
       <h1 id="main-title" className="heading">
         Gingerbread
       </h1>
-      <SearchBox onSubmit={onSearch} />
+      <SearchBox />
       {data.length > 0 && (
         <div className="results">
           {displayNoResultMessage && (

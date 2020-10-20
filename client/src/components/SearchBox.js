@@ -3,18 +3,13 @@ import "../styles/SearchBox.css";
 import { setSearch as setSearchAction } from "../redux/actions";
 import { connect } from "react-redux";
 
-const SearchBox = ({ onSubmit, setSearch }) => {
+const SearchBox = ({ setSearch }) => {
   const handleChange = ({ currentTarget: { value } }) => {
     setSearch(value);
   };
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    onSubmit();
-  };
-
   return (
-    <form className="search-cont" onSubmit={handleClick}>
+    <form className="search-cont">
       <input
         type="text"
         className="search-input"
