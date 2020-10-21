@@ -6,7 +6,6 @@ const cookieParser = require("cookie-parser");
 
 const indexRouter = require("./routes/index");
 const recipesRouter = require("./routes/recipes");
-// const recipeInformationRouter = require("./routes/recipes_information");
 const recipeInformationRouter = require("./routes/recipe_information");
 
 const app = express();
