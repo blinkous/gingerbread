@@ -6,6 +6,8 @@ const cookieParser = require("cookie-parser");
 
 const indexRouter = require("./routes/index");
 const recipesRouter = require("./routes/recipes");
+// const recipeInformationRouter = require("./routes/recipes_information");
+const recipeInformationRouter = require("./routes/recipe_information");
 
 const app = express();
 
@@ -20,6 +22,7 @@ app.use(cookieParser());
 
 app.use(`/api/`, indexRouter);
 app.use(`/api/recipes`, recipesRouter);
+app.use(`/api/recipe-information`, recipeInformationRouter);
 
 app.set("port", process.env.PORT || 3001);
 

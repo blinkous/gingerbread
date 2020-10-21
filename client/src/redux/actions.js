@@ -3,6 +3,7 @@ import {
   CLEAR_RECIPE_RESULTS,
   ADD_RECIPE_RESULT,
   SET_SEARCH,
+  SET_ACTIVE_RECIPE,
 } from "./actionTypes";
 
 export const populateRecipes = (recipes) => ({
@@ -27,5 +28,12 @@ export const setSearch = (search) => ({
   type: SET_SEARCH,
   payload: {
     search,
+  },
+});
+
+export const setActiveRecipe = (recipe) => ({
+  type: SET_ACTIVE_RECIPE,
+  payload: {
+    recipe,
   },
 });

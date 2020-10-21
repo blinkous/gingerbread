@@ -1,0 +1,10 @@
+.recipe-details {
+  position: fixed;
+  height: 80vh;
+  width: 60vh;
+  background: white;
+  border-radius: 5vh;
+  top: 10vh;
+  left: 50%;
+  transform: translateX(-50%);
+}

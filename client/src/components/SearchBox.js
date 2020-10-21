@@ -1,11 +1,11 @@
 import React from "react";
 import "../styles/SearchBox.css";
-import { setSearch as setSearchAction } from "../redux/actions";
+import { setSearch } from "../redux/actions";
 import { connect } from "react-redux";
 
-const SearchBox = ({ setSearch }) => {
+const SearchBox = ({ d_setSearch }) => {
   const handleChange = ({ currentTarget: { value } }) => {
-    setSearch(value);
+    d_setSearch(value);
   };
 
   return (
@@ -33,5 +33,5 @@ const SearchBox = ({ setSearch }) => {
 };
 
 export default connect(null, {
-  setSearch: setSearchAction,
+  d_setSearch: setSearch,
 })(SearchBox);

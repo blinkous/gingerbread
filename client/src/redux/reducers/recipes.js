@@ -6,7 +6,7 @@ import {
 
 const initialState = [];
 
-const recipesReducers = (state = initialState, action) => {
+const recipesReducer = (state = initialState, action) => {
   switch (action.type) {
     case POPULATE_RECIPE_RESULTS:
       return action.payload.recipes;
@@ -22,4 +22,4 @@ const recipesReducers = (state = initialState, action) => {
   }
 };
 
-export default recipesReducers;
+export default recipesReducer;
