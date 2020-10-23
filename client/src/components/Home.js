@@ -26,6 +26,7 @@ const Home = ({
       console.log(body);
 
       if (body.length > 0) {
+        localStorage.setItem(searchQuery, JSON.stringify(body));
         d_populateRecipes(body);
       } else {
         displayStaticData();
@@ -50,7 +51,18 @@ const Home = ({
 
   const onSearch = () => {
     if (search) {
-      getData(search);
+      const localStorageRecipes = JSON.parse(localStorage.getItem(search));
+      if (localStorageRecipes) {
+        console.log(
+          "Fetched results for",
+          search,
+          "from local storage and got:",
+          localStorageRecipes
+        );
+        d_populateRecipes(localStorageRecipes);
+      } else {
+        getData(search);
+      }
     } else {
       d_clearRecipes();
     }

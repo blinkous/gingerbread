@@ -13,24 +13,29 @@ const RecipeDetails = ({
   };
 
   return (
-    <div className="recipe-details">
-      <button className="exit-btn" onClick={handleClick}>
-        &times;
-      </button>
-      <h5 className="recipe-title">{title}</h5>
-      <img className="recipe-image" src={image} alt={title} />
-      {extendedIngredients.map(({ name, image: iImage, measures: { us } }) => (
-        <div className="ingredient">
-          {/* Image URLS are relative */}
-          {/* {iImage ? <img src={iImage} alt={name} /> : null} */}
-          <p className="ingredient-info">
-            <span className="ingredient-name">{name}</span>
-            <span className="ingredient-amount">{us.amount}</span>
-            <span className="ingredient-unit">{us.unitShort || ""}</span>
-          </p>
-        </div>
-      ))}
-    </div>
+    <>
+      <div className="modal-background"></div>
+      <div className="recipe-details">
+        <button className="exit-btn" onClick={handleClick}>
+          &times;
+        </button>
+        <h5 className="recipe-title">{title}</h5>
+        <img className="recipe-image" src={image} alt={title} />
+        {extendedIngredients.map(
+          ({ name, image: iImage, measures: { us } }) => (
+            <div className="ingredient">
+              {/* Image URLS are relative */}
+              {/* {iImage ? <img src={iImage} alt={name} /> : null} */}
+              <p className="ingredient-info">
+                <span className="ingredient-name">{name}</span>
+                <span className="ingredient-amount">{us.amount}</span>
+                <span className="ingredient-unit">{us.unitShort || ""}</span>
+              </p>
+            </div>
+          )
+        )}
+      </div>
+    </>
   );
 };
 
