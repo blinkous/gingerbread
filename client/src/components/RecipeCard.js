@@ -4,13 +4,14 @@ import "../styles/RecipeCard.css";
 import { setActiveRecipe } from "../redux/actions";
 
 const RecipeCard = ({ title, image, id, d_setActiveRecipe }) => {
-  const getData = async () => {
+  const getData = async (recipeId) => {
     try {
-      const response = await fetch(`/api/recipe-information/${id}`);
+      const response = await fetch(`/api/recipe-information/${recipeId}`);
       const body = await response.json();
-      console.log(body);
+      console.log("Fetched recipe info results and got: ", body);
 
       if (body.hasOwnProperty("title")) {
+        localStorage.setItem(`recipe_${recipeId}`, JSON.stringify(body));
         d_setActiveRecipe(body);
       }
     } catch (e) {
@@ -20,7 +21,15 @@ const RecipeCard = ({ title, image, id, d_setActiveRecipe }) => {
   };
 
   const handleClick = () => {
-    getData();
+    const localStorageRecipeInfo = JSON.parse(
+      localStorage.getItem(`recipe_${id}`)
+    );
+    if (localStorageRecipeInfo) {
+      console.log("Found recipe info in local storage");
+      d_setActiveRecipe(localStorageRecipeInfo);
+    } else {
+      getData(id);
+    }
   };
 
   return (

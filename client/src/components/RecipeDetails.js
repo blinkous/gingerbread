@@ -11,29 +11,39 @@ const RecipeDetails = ({
   const handleClick = () => {
     d_setActiveRecipe({});
   };
+  const ingredientImageSize = ["100x100", "250x250", "500x500"];
+  const ingredientBaseUrl = `https://spoonacular.com/cdn/ingredients_${ingredientImageSize[0]}/`;
 
   return (
     <>
-      <div className="modal-background"></div>
+      <div className="modal-background" onClick={handleClick}></div>
       <div className="recipe-details">
         <button className="exit-btn" onClick={handleClick}>
           &times;
         </button>
-        <h5 className="recipe-title">{title}</h5>
-        <img className="recipe-image" src={image} alt={title} />
-        {extendedIngredients.map(
-          ({ name, image: iImage, measures: { us } }) => (
-            <div className="ingredient">
-              {/* Image URLS are relative */}
-              {/* {iImage ? <img src={iImage} alt={name} /> : null} */}
-              <p className="ingredient-info">
-                <span className="ingredient-name">{name}</span>
-                <span className="ingredient-amount">{us.amount}</span>
-                <span className="ingredient-unit">{us.unitShort || ""}</span>
-              </p>
-            </div>
-          )
-        )}
+        {/* <h5 className="recipe-title">{title}</h5> */}
+        <h5 className="heading">{title}</h5>
+        <img className="recipe-large-image" src={image} alt={title} />
+        <div className="ingredients-container">
+          {extendedIngredients.map(
+            ({ name, image: iImage, measures: { us } }, index) => (
+              <div className="ingredient" key={index}>
+                {iImage ? (
+                  <img
+                    src={`${ingredientBaseUrl}${iImage}`}
+                    alt={name}
+                    className="ingredient-image"
+                  />
+                ) : null}
+                <p className="ingredient-info">
+                  <span className="ingredient-amount">{us.amount}</span>{" "}
+                  <span className="ingredient-unit">{us.unitShort || ""}</span>{" "}
+                  <span className="ingredient-name">{name}</span>
+                </p>
+              </div>
+            )
+          )}
+        </div>
       </div>
     </>
   );

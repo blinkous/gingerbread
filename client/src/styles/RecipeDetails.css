@@ -1,25 +1,65 @@
-.modal-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  background: var(--accent);
-  opacity: 0.6;
-  z-index: 0;
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: var(--end-opacity, 1);
+  }
 }
+
+@keyframes modal-slide-up {
+  from {
+    transform: translate(-50%, 100%);
+  }
+  to {
+    transform: translate(-50%, 0%);
+  }
+}
+
+.modal-background {
+  --end-opacity: 0.6;
+  position: fixed;
+  top: -10vh;
+  left: -10vw;
+  right: 0;
+  bottom: 0;
+  height: 120vh;
+  width: 120vw;
+  background: var(--accent);
+  opacity: var(--end-opacity);
+  cursor: pointer;
+  z-index: 0;
+  transition: 0.3s all;
+  animation: fade-in 0.3s both;
+}
+
 .recipe-details {
+  --padding: 1rem;
+  --background: white;
+  --accent: var(--main-color);
+
+  --background: var(--main-color);
+  --accent: white;
+
   position: fixed;
   height: 80vh;
   width: 60vh;
-  background: white;
+  background: var(--background);
   border-radius: 1rem;
   padding: var(--padding);
   top: 10vh;
   left: 50%;
   transform: translateX(-50%);
-  --padding: 1rem;
   z-index: 10;
+  box-shadow: 0 0 2rem 0.75rem var(--accent);
+  animation: modal-slide-up 0.4s both;
+}
+
+.recipe-details .recipe-title,
+.recipe-details .heading {
+  font-size: 2rem;
+  margin: 0.5rem 0;
+  color: var(--accent);
 }
 
 .exit-btn {
@@ -46,5 +86,79 @@
 }
 .exit-btn:hover {
   background: var(--accent);
-  color: white;
+  color: var(--background);
+}
+
+.recipe-large-image {
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.ingredients-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.ingredient {
+  flex: 1;
+  position: relative;
+  transition: 0.4s all;
+  cursor: pointer;
+}
+
+.ingredient * {
+  margin: 0;
+  transition: inherit;
+}
+
+.ingredient-image {
+  --size: 4rem;
+  width: var(--size);
+  height: var(--size);
+  object-fit: contain;
+  background-color: white;
+  border-radius: 100%;
+  border: 0.5rem solid white;
+}
+
+.ingredient-info {
+  width: 10rem;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  background: var(--background);
+  color: var(--accent);
+  padding: 0.5rem;
+  border: 1px solid var(--accent);
+  /* border-radius: 100%; */
+  z-index: 11;
+}
+
+.ingredient:hover {
+  /* transform: scale(1.5); */
+  z-index: 10;
+}
+
+.ingredient:hover .ingredient-image {
+  transform: scale(1.5);
+}
+
+.ingredient:hover .ingredient-info {
+  opacity: 1;
+  pointer-events: initial;
+}
+
+@media (max-width: 768px) {
+  .recipe-details {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    transform: translate(0, 0);
+    box-shadow: none;
+  }
 }

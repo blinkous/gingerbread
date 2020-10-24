@@ -23,7 +23,7 @@ const Home = ({
     try {
       const response = await fetch(`/api/recipes/${searchQuery}`);
       const body = await response.json();
-      console.log(body);
+      console.log("Fetched query results and got:", body);
 
       if (body.length > 0) {
         localStorage.setItem(searchQuery, JSON.stringify(body));
@@ -38,7 +38,7 @@ const Home = ({
   };
 
   useEffect(() => {
-    console.log(activeRecipe);
+    console.log("Active Recipe has changed to", activeRecipe);
   }, [activeRecipe]);
 
   useEffect(() => {
@@ -46,19 +46,24 @@ const Home = ({
   }, [search]);
 
   const displayStaticData = () => {
-    d_populateRecipes(generateStaticData());
+    const noResults = "no_results";
+    const localStorageStatic = JSON.parse(localStorage.getItem(noResults));
+
+    if (localStorageStatic) {
+      d_populateRecipes(localStorageStatic);
+    } else {
+      console.log("Generated static data");
+      const staticData = generateStaticData();
+      d_populateRecipes(staticData);
+      localStorage.setItem(noResults, JSON.stringify(staticData));
+    }
   };
 
   const onSearch = () => {
     if (search) {
       const localStorageRecipes = JSON.parse(localStorage.getItem(search));
       if (localStorageRecipes) {
-        console.log(
-          "Fetched results for",
-          search,
-          "from local storage and got:",
-          localStorageRecipes
-        );
+        console.log("Found query resultsin local storage");
         d_populateRecipes(localStorageRecipes);
       } else {
         getData(search);

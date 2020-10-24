@@ -8,8 +8,12 @@ const SearchBox = ({ d_setSearch }) => {
     d_setSearch(value);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
-    <form className="search-cont">
+    <form className="search-cont" onSubmit={handleSubmit}>
       <input
         type="text"
         className="search-input"
