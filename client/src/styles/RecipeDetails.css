@@ -35,12 +35,8 @@
 
 .recipe-details {
   --padding: 1rem;
-  --background: white;
-  --accent: var(--main-color);
-
-  --background: var(--main-color);
+  --background: var(--main-accent);
   --accent: white;
-
   position: absolute;
   height: 80vh;
   width: 60vh;
@@ -55,7 +51,6 @@
   animation: modal-slide-up 0.4s both;
 }
 
-.recipe-details .recipe-title,
 .recipe-details .heading {
   font-size: 2rem;
   margin: 0.5rem 0;

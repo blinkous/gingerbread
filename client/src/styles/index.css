@@ -3,8 +3,8 @@
 }
 
 body {
-  --main-color: #940000;
-  background: var(--main-color);
+  --main-accent: #940000;
+  background: var(--main-accent);
   font-family: sans-serif;
   overflow: hidden;
   min-height: 100%;

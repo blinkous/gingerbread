@@ -21,7 +21,6 @@ const RecipeDetails = ({
         <button className="exit-btn" onClick={handleClick}>
           &times;
         </button>
-        {/* <h5 className="recipe-title">{title}</h5> */}
         <h5 className="heading">{title}</h5>
         <img className="recipe-large-image" src={image} alt={title} />
         <div className="ingredients-container">

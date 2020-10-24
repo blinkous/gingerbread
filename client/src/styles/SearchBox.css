@@ -1,7 +1,7 @@
 .search-cont {
   --size: 14vw;
-  --background: white;
-  --foreground: var(--main-color, rgb(44, 44, 44));
+  --background: var(--main-foreground, white);
+  --foreground: var(--main-background, #940000);
   width: calc(var(--size) * 3.5);
   height: calc(var(--size) * 0.33);
   border-radius: 10vw;
