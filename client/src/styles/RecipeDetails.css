@@ -18,7 +18,7 @@
 
 .modal-background {
   --end-opacity: 0.6;
-  position: fixed;
+  position: absolute;
   top: -10vh;
   left: -10vw;
   right: 0;
@@ -41,7 +41,7 @@
   --background: var(--main-color);
   --accent: white;
 
-  position: fixed;
+  position: absolute;
   height: 80vh;
   width: 60vh;
   background: var(--background);
@@ -124,6 +124,7 @@
   background-color: white;
   border-radius: 100%;
   border: 0.5rem solid white;
+  display: inline-block;
 }
 
 .ingredient-info {
@@ -134,13 +135,10 @@
   background: var(--background);
   color: var(--accent);
   padding: 0.5rem;
-  border: 1px solid var(--accent);
-  /* border-radius: 100%; */
   z-index: 11;
 }
 
 .ingredient:hover {
-  /* transform: scale(1.5); */
   z-index: 10;
 }
 
@@ -157,8 +155,44 @@
   .recipe-details {
     width: 100vw;
     height: 100vh;
-    top: 0;
+    top: -1rem;
     transform: translate(0, 0);
     box-shadow: none;
+    border-radius: 0;
+  }
+  .ingredients-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    overflow-y: scroll;
+  }
+  .ingredient {
+    cursor: default;
+    text-align: left;
+  }
+  .ingredient-info {
+    max-width: 12rem;
+    width: unset;
+    position: relative;
+    top: 0;
+    opacity: 1;
+    pointer-events: initial;
+    display: inline-block;
+    margin: 0 0.5rem;
+    padding: 0;
+    background: transparent;
+  }
+  .ingredient:hover .ingredient-image {
+    transform: initial;
+  }
+
+  @media (max-width: 600px) {
+    .ingredients-container {
+      display: block;
+    }
+    .ingredient-info {
+      max-width: unset;
+      width: unset;
+      position: relative;
+    }
   }
 }

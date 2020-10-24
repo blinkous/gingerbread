@@ -1,7 +1,8 @@
 #home {
   --padding: 1rem;
-  --width: calc(100vw - (var(--padding) * 2));
-  --height: calc(100vh - (var(--padding) * 2));
+  --margin: calc(var(--padding) * 2);
+  --width: calc(100vw - var(--margin));
+  --height: calc(100vh - var(--margin));
   --title-size: 14vw;
   --accent: white;
   max-width: var(--height);
@@ -23,6 +24,8 @@
 }
 
 #home.show {
+  --width: calc(100% - var(--margin));
+  --height: calc(100% - var(--margin));
   --title-size: 3rem;
   --accent: var(--main-color);
   --padding-top: calc(var(--title-size) * 2.3);
