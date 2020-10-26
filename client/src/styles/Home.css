@@ -101,7 +101,7 @@
   --grid-gap: 0.25rem;
   grid-gap: var(--grid-gap);
   gap: var(--grid-gap);
-  padding: 1rem;
+  padding: var(--padding);
 }
 
 .no-results {
@@ -117,5 +117,14 @@
 @media (max-height: 75vw) {
   #home {
     --title-size: 17vh;
+  }
+}
+
+@media (max-width: 600px) {
+  #home {
+    --padding: 0.5rem;
+  }
+  #home.show .results {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

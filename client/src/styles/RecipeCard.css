@@ -38,4 +38,7 @@
   color: var(--accent);
   padding: 0.2rem 0;
   width: 90%;
+  hyphens: auto;
+  height: 2rem;
+  overflow: hidden;
 }
