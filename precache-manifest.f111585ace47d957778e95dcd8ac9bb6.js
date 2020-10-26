@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4d421039c14b84181505c4d7b40446f8",
+    "revision": "08cb099063bbfcc91252bce78f616e4a",
     "url": "/gingerbread/index.html"
   },
   {
-    "revision": "aa37079ff63afc432f84",
-    "url": "/gingerbread/static/css/main.a9d057a9.chunk.css"
+    "revision": "5e0be8c3304895d943f9",
+    "url": "/gingerbread/static/css/main.9a0983fc.chunk.css"
   },
   {
-    "revision": "6c5b489bc4fa530d89fa",
-    "url": "/gingerbread/static/js/2.b4827d60.chunk.js"
+    "revision": "0d9f9deef31f377d8293",
+    "url": "/gingerbread/static/js/2.3211a51b.chunk.js"
   },
   {
-    "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
-    "url": "/gingerbread/static/js/2.b4827d60.chunk.js.LICENSE.txt"
+    "revision": "9b318b6fb13190fe82c0677e9264b3c7",
+    "url": "/gingerbread/static/js/2.3211a51b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "aa37079ff63afc432f84",
-    "url": "/gingerbread/static/js/main.1273f4b8.chunk.js"
+    "revision": "5e0be8c3304895d943f9",
+    "url": "/gingerbread/static/js/main.40e3eceb.chunk.js"
   },
   {
     "revision": "8ef099aa7397738941a5",
