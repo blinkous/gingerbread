@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/gingerbread/precache-manifest.f111585ace47d957778e95dcd8ac9bb6.js"
+  "/gingerbread/precache-manifest.c1cfc317f51976ac2a92575583ce0a57.js"
 );
 
 self.addEventListener('message', (event) => {
