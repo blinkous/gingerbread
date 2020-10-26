@@ -11,6 +11,7 @@ import { connect } from "react-redux";
 import { populateRecipes, addToRecipes, clearRecipes } from "../redux/actions";
 import SearchResults from "./SearchResults";
 import RecipeDetails from "./RecipeDetails";
+import { getFromLocalStorage, addToLocalStorage } from "../helpers";
 
 const Home = ({
   search,
@@ -26,7 +27,7 @@ const Home = ({
       console.log("Fetched query results and got:", body);
 
       if (body.length > 0) {
-        localStorage.setItem(searchQuery, JSON.stringify(body));
+        addToLocalStorage(searchQuery, body);
         d_populateRecipes(body);
       } else {
         displayStaticData();
@@ -47,7 +48,7 @@ const Home = ({
 
   const displayStaticData = () => {
     const noResults = "no_results";
-    const localStorageStatic = JSON.parse(localStorage.getItem(noResults));
+    const localStorageStatic = getFromLocalStorage(noResults);
 
     if (localStorageStatic) {
       d_populateRecipes(localStorageStatic);
@@ -55,15 +56,16 @@ const Home = ({
       console.log("Generated static data");
       const staticData = generateStaticData();
       d_populateRecipes(staticData);
-      localStorage.setItem(noResults, JSON.stringify(staticData));
+      addToLocalStorage(noResults, staticData);
     }
   };
 
   const onSearch = () => {
     if (search) {
-      const localStorageRecipes = JSON.parse(localStorage.getItem(search));
+      const localStorageRecipes = getFromLocalStorage(search);
+
       if (localStorageRecipes) {
-        console.log("Found query resultsin local storage");
+        console.log("Found query results in local storage");
         d_populateRecipes(localStorageRecipes);
       } else {
         getData(search);

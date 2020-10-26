@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import "../styles/RecipeCard.css";
 import { setActiveRecipe } from "../redux/actions";
+import { getFromLocalStorage, addToLocalStorage } from "../helpers";
 
 const RecipeCard = ({ title, image, id, d_setActiveRecipe }) => {
   const getData = async (recipeId) => {
@@ -11,7 +12,7 @@ const RecipeCard = ({ title, image, id, d_setActiveRecipe }) => {
       console.log("Fetched recipe info results and got: ", body);
 
       if (body.hasOwnProperty("title")) {
-        localStorage.setItem(`recipe_${recipeId}`, JSON.stringify(body));
+        addToLocalStorage(`recipe_${recipeId}`, body);
         d_setActiveRecipe(body);
       }
     } catch (e) {
@@ -21,9 +22,8 @@ const RecipeCard = ({ title, image, id, d_setActiveRecipe }) => {
   };
 
   const handleClick = () => {
-    const localStorageRecipeInfo = JSON.parse(
-      localStorage.getItem(`recipe_${id}`)
-    );
+    const localStorageRecipeInfo = getFromLocalStorage(`recipe_${id}`);
+
     if (localStorageRecipeInfo) {
       console.log("Found recipe info in local storage");
       d_setActiveRecipe(localStorageRecipeInfo);
