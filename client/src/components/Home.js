@@ -21,28 +21,12 @@ const Home = ({
   d_populateRecipes,
   d_clearRecipes,
 }) => {
-  /*   const getData = async (searchQuery) => {
-    try {
-      const response = await fetch(`/api/recipes/${searchQuery}`);
-      const body = await response.json();
-      console.log("Fetched query results and got:", body);
-
-      if (body.length > 0) {
-        addToLocalStorage(searchQuery, body);
-        d_populateRecipes(body);
-      } else {
-        displayStaticData();
-      }
-    } catch (e) {
-      console.log("Unable to fetch recipes", e);
-      displayStaticData();
-    }
-  }; */
-
   const getData = async () => {
+    /* Get async recipe results for search from the backend */
     const results = await getRecipeResults(search);
     console.log("results are", results);
 
+    /* If there are results, add them to the recipes, otherwise display the static data */
     if (results) {
       addToLocalStorage(search, results);
       d_populateRecipes(results);
@@ -56,6 +40,7 @@ const Home = ({
   }, [activeRecipe]);
 
   useEffect(() => {
+    /* Whenever the search changes, trigger onSearch() to look for search results */
     onSearch();
   }, [search]);
 
@@ -63,20 +48,23 @@ const Home = ({
     const noResults = "no_results";
     const localStorageStatic = getFromLocalStorage(noResults);
 
+    /* If static data is in local storage, populate from there, otherwise generate them */
     if (localStorageStatic) {
       d_populateRecipes(localStorageStatic);
     } else {
-      console.log("Generated static data");
       const staticData = generateStaticData();
+      console.log("Generated static data");
       d_populateRecipes(staticData);
       addToLocalStorage(noResults, staticData);
     }
   };
 
   const onSearch = () => {
+    /* If the search is not empy, then look for the results. Otherwise, clear the results */
     if (search) {
       const localStorageRecipes = getFromLocalStorage(search);
 
+      /* If there is a result in localStorage, populate the recipes from there, else fetch results from the backend */
       if (localStorageRecipes) {
         console.log("Found query results in local storage");
         d_populateRecipes(localStorageRecipes);

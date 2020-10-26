@@ -7,9 +7,10 @@ import { getRecipeInformation } from "../fetchers";
 
 const RecipeCard = ({ title, image, id, d_setActiveRecipe }) => {
   const getData = async () => {
+    /* Query the API for this recipe's information */
     const result = await getRecipeInformation(id);
-    console.log("Recipe Information", result);
 
+    /* If query result has a an id property, it is not empty, add the results to the activeRecipe */
     if (result && result.hasOwnProperty("id")) {
       addToLocalStorage(`recipe_${id}`, result);
       d_setActiveRecipe(result);
@@ -21,6 +22,7 @@ const RecipeCard = ({ title, image, id, d_setActiveRecipe }) => {
   const handleClick = () => {
     const localStorageRecipeInfo = getFromLocalStorage(`recipe_${id}`);
 
+    /* Search for this recipe in localStorage, if it isn't there, fetch the results */
     if (localStorageRecipeInfo) {
       console.log("Found recipe info in local storage");
       d_setActiveRecipe(localStorageRecipeInfo);
