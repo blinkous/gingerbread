@@ -17,7 +17,6 @@ export const getFromLocalStorage = (key) => {
 
   /* If the item was found in localStorage and it has not expired yet, return the value */
   if (itemRetrieved) {
-    return itemRetrieved.value; /* TESTING-ONLY */
     const date = new Date();
     if (
       itemRetrieved.expiry === null ||
