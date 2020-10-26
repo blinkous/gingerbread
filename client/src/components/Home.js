@@ -22,25 +22,6 @@ const Home = ({
   d_clearRecipes,
 }) => {
   const [noResultsFound, setNoResultsFound] = useState(false);
-  const getData = async () => {
-    /* Get async recipe results for search from the backend */
-    const results = await getRecipeResults(search);
-    console.log("results are", results);
-
-    /* If there are results, add them to the recipes, otherwise display the static data */
-    if (results) {
-      addToLocalStorage(search, results);
-      d_populateRecipes(results);
-      noResultsFound && setNoResultsFound(false);
-    } else {
-      setNoResultsFound(true);
-      displayStaticData();
-    }
-  };
-
-  useEffect(() => {
-    console.log("Active Recipe has changed to", activeRecipe);
-  }, [activeRecipe]);
 
   useEffect(() => {
     /* Whenever the search changes, trigger onSearch() to look for search results */
@@ -62,17 +43,40 @@ const Home = ({
     }
   };
 
-  const onSearch = () => {
-    /* If the search is not empy, then look for the results. Otherwise, clear the results */
-    if (search) {
-      const localStorageRecipes = getFromLocalStorage(search);
+  const fetchResults = async () => {
+    /* Get async recipe results for search from the backend */
+    const results = await getRecipeResults(search);
+    console.log("results are", results);
 
-      /* If there is a result in localStorage, populate the recipes from there, else fetch results from the backend */
-      if (localStorageRecipes) {
-        console.log("Found query results in local storage");
-        d_populateRecipes(localStorageRecipes);
-      } else {
-        getData(search);
+    /* If there are results, add them to the recipes, otherwise display the static data */
+    if (results) {
+      addToLocalStorage(search, results);
+      d_populateRecipes(results);
+      noResultsFound && setNoResultsFound(false);
+    } else {
+      setNoResultsFound(true);
+      displayStaticData();
+    }
+  };
+
+  const getResultsFromLocal = () => {
+    const localStorageRecipes = getFromLocalStorage(search);
+
+    /* If there is a result in localStorage, populate the recipes from there */
+    if (localStorageRecipes) {
+      console.log("Found query results in local storage");
+      d_populateRecipes(localStorageRecipes);
+      noResultsFound && setNoResultsFound(false);
+      return true;
+    }
+    return false;
+  };
+
+  const onSearch = () => {
+    /* If the search is not empy, get results from localStorage, if they're not in local storage fetch it from the backend. Otherwise, clear the results */
+    if (search) {
+      if (!getResultsFromLocal()) {
+        fetchResults(search);
       }
     } else {
       d_clearRecipes();
