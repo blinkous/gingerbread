@@ -3,10 +3,10 @@ import "../styles/Home.css";
 import RecipeCard from "./RecipeCard";
 import { connect } from "react-redux";
 
-const SearchResults = ({ recipes, search }) => {
+const SearchResults = ({ recipes, showStatic }) => {
   return (
     <div className="results">
-      {!search && recipes.length > 0 && (
+      {showStatic && recipes.length > 0 && (
         <p className="no-results">
           No results were found, but here are some Gingerbread Cookies &hearts;
         </p>
@@ -18,6 +18,4 @@ const SearchResults = ({ recipes, search }) => {
   );
 };
 
-export default connect(({ recipes, search }) => ({ recipes, search }))(
-  SearchResults
-);
+export default connect(({ recipes }) => ({ recipes }))(SearchResults);

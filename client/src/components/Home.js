@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Home.css";
 import SearchBox from "./SearchBox";
 import GingerBreadImage0 from "../images/gingerbread-cookies-0.jpg";
@@ -21,6 +21,7 @@ const Home = ({
   d_populateRecipes,
   d_clearRecipes,
 }) => {
+  const [noResultsFound, setNoResultsFound] = useState(false);
   const getData = async () => {
     /* Get async recipe results for search from the backend */
     const results = await getRecipeResults(search);
@@ -30,7 +31,9 @@ const Home = ({
     if (results) {
       addToLocalStorage(search, results);
       d_populateRecipes(results);
+      noResultsFound && setNoResultsFound(false);
     } else {
+      setNoResultsFound(true);
       displayStaticData();
     }
   };
@@ -85,7 +88,7 @@ const Home = ({
         Gingerbread
       </h1>
       <SearchBox />
-      {recipes.length > 0 && <SearchResults />}
+      {recipes.length > 0 && <SearchResults showStatic={noResultsFound} />}
       {activeRecipe.title && <RecipeDetails />}
     </div>
   );
