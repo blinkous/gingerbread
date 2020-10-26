@@ -79,6 +79,7 @@
   cursor: pointer;
   z-index: 10;
   transition: 0.3s all;
+  -webkit-tap-highlight-color: transparent;
 }
 .exit-btn:hover {
   background: var(--accent);
