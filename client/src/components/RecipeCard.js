@@ -3,20 +3,17 @@ import { connect } from "react-redux";
 import "../styles/RecipeCard.css";
 import { setActiveRecipe } from "../redux/actions";
 import { getFromLocalStorage, addToLocalStorage } from "../helpers";
+import { getRecipeInformation } from "../fetchers";
 
 const RecipeCard = ({ title, image, id, d_setActiveRecipe }) => {
-  const getData = async (recipeId) => {
-    try {
-      const response = await fetch(`/api/recipe-information/${recipeId}`);
-      const body = await response.json();
-      console.log("Fetched recipe info results and got: ", body);
+  const getData = async () => {
+    const result = await getRecipeInformation(id);
+    console.log("Recipe Information", result);
 
-      if (body.hasOwnProperty("title")) {
-        addToLocalStorage(`recipe_${recipeId}`, body);
-        d_setActiveRecipe(body);
-      }
-    } catch (e) {
-      console.log("Unable to fetch recipes", e);
+    if (result && result.hasOwnProperty("id")) {
+      addToLocalStorage(`recipe_${id}`, result);
+      d_setActiveRecipe(result);
+    } else {
       d_setActiveRecipe({});
     }
   };

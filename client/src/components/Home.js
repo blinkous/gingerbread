@@ -12,6 +12,7 @@ import { populateRecipes, addToRecipes, clearRecipes } from "../redux/actions";
 import SearchResults from "./SearchResults";
 import RecipeDetails from "./RecipeDetails";
 import { getFromLocalStorage, addToLocalStorage } from "../helpers";
+import { getRecipeResults } from "../fetchers";
 
 const Home = ({
   search,
@@ -20,7 +21,7 @@ const Home = ({
   d_populateRecipes,
   d_clearRecipes,
 }) => {
-  const getData = async (searchQuery) => {
+  /*   const getData = async (searchQuery) => {
     try {
       const response = await fetch(`/api/recipes/${searchQuery}`);
       const body = await response.json();
@@ -34,6 +35,18 @@ const Home = ({
       }
     } catch (e) {
       console.log("Unable to fetch recipes", e);
+      displayStaticData();
+    }
+  }; */
+
+  const getData = async () => {
+    const results = await getRecipeResults(search);
+    console.log("results are", results);
+
+    if (results) {
+      addToLocalStorage(search, results);
+      d_populateRecipes(results);
+    } else {
       displayStaticData();
     }
   };
