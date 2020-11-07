@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "32e10a6a98ef7841fbefd77a56f3b3c2",
+    "revision": "604d35891829166b3bcfed886cb884b7",
     "url": "/gingerbread/index.html"
   },
   {
-    "revision": "96c95e6d2413bc8b66c4",
-    "url": "/gingerbread/static/css/main.9a0983fc.chunk.css"
+    "revision": "f83baa54522b7e461e34",
+    "url": "/gingerbread/static/css/main.08167228.chunk.css"
   },
   {
     "revision": "61aa0ea44dc93b4a94f2",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/gingerbread/static/js/2.ae301ede.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "96c95e6d2413bc8b66c4",
-    "url": "/gingerbread/static/js/main.571ad5be.chunk.js"
+    "revision": "f83baa54522b7e461e34",
+    "url": "/gingerbread/static/js/main.50ce6283.chunk.js"
   },
   {
     "revision": "8ef099aa7397738941a5",
