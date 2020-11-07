@@ -156,6 +156,7 @@
   padding-top: calc(var(--size) / 3.5);
   z-index: 10;
 }
+
 .ingredient-measure::before {
   content: "";
   position: absolute;
@@ -200,10 +201,32 @@
   .ingredient {
     cursor: default;
     text-align: left;
+    position: static;
+    width: auto;
+    height: auto;
+    max-width: unset;
+    max-height: unset;
+    display: flex;
+  }
+  .ingredient-measure {
+    position: static;
+    display: inline-block;
+  }
+
+  .ingredient-measure::before {
+    content: unset;
+  }
+  .ingredient-name {
+    display: inline-block;
+    background: transparent;
+    color: white;
+    padding: 0;
+    font-size: 100%;
   }
   .ingredient-info {
     max-width: 12rem;
-    width: unset;
+    max-height: unset;
+    width: auto;
     position: relative;
     top: 0;
     opacity: 1;
