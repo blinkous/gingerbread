@@ -34,11 +34,15 @@ const RecipeDetails = ({
                     className="ingredient-image"
                   />
                 ) : null}
-                <p className="ingredient-info">
-                  <span className="ingredient-amount">{us.amount}</span>{" "}
-                  <span className="ingredient-unit">{us.unitShort || ""}</span>{" "}
-                  <span className="ingredient-name">{name}</span>
-                </p>
+                <div className="ingredient-info">
+                  <p className="ingredient-measure">
+                    <span className="ingredient-amount">{us.amount}</span>{" "}
+                    <span className="ingredient-unit">
+                      {us.unitShort || ""}
+                    </span>{" "}
+                  </p>
+                  <p className="ingredient-name">{name}</p>
+                </div>
               </div>
             )
           )}

@@ -97,7 +97,7 @@
   width: 100%;
   max-height: calc(48% - var(--heading-size) + 1rem);
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
   height: 40%;
@@ -105,6 +105,11 @@
 }
 
 .ingredient {
+  --size: 4rem;
+  width: var(--size);
+  height: var(--size);
+  max-width: var(--size);
+  max-height: var(--size);
   flex: 1;
   position: relative;
   transition: 0.4s all;
@@ -117,7 +122,6 @@
 }
 
 .ingredient-image {
-  --size: 4rem;
   width: var(--size);
   height: var(--size);
   object-fit: contain;
@@ -130,20 +134,49 @@
 .ingredient-info {
   width: 10rem;
   position: absolute;
+  top: 0;
+  left: 0;
+  /* height: 100%; */
+  width: 100%;
   opacity: 0;
+  border-radius: 100%;
   pointer-events: none;
-  background: var(--background);
+  /* background: var(--background); */
   color: var(--accent);
-  padding: 0.5rem;
+  padding: 0;
   z-index: 11;
 }
 
-.ingredient:hover {
+.ingredient-measure {
+  height: var(--size);
+  width: var(--size);
+  border-radius: inherit;
+  position: relative;
+  align-items: center;
+  padding-top: calc(var(--size) / 3.5);
   z-index: 10;
 }
-
-.ingredient:hover .ingredient-image {
-  transform: scale(1.5);
+.ingredient-measure::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: var(--size);
+  width: var(--size);
+  border-radius: inherit;
+  background: var(--background);
+  opacity: 0.8;
+  z-index: -1;
+}
+.ingredient-name {
+  background: white;
+  color: var(--background);
+  padding: 0.5rem;
+  font-size: 85%;
+  word-break: break-all;
+}
+.ingredient:hover {
+  z-index: 10;
 }
 
 .ingredient:hover .ingredient-info {
